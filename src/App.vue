@@ -6,24 +6,9 @@
         <section id="container">
             <section id="main">
                 <div class="content">
-                    <div id="profile-container" class="tab active">
-                        <div id="profile">
-                            <div class="avatar">
-                                <img src="./assets/me.png" id="picture" alt="My picture">
-                            </div>
-                            <div class="info">
-                                <ul>
-                                    <li id="name">John Doe</li>
-                                    <li id="birthdate">11/10/1990</li>
-                                    <li id="faculty">Software Engineering</li>
-                                </ul>
-                            </div>
-                            <div id="gpa">
-                                <strong>2.75</strong>
-                            </div>
-                            <div class="clear-fix"></div>
-                        </div>
-                    </div>
+                    <!-- Here were profile section -->
+                    <Profile :userProps="user"/>
+                    
                     <div id="courses-container" class="tab">
                         <h1 class="title">Courses</h1>
                         <table id="courses">
@@ -96,10 +81,20 @@
 </template>
 
 <script>
+    import User from "./models/User"
+    import Profile from "./components/Profile.vue"
 
     export default {
         name: 'app',
-        components: {}
+        components: {
+            Profile
+        },
+        data: () => {
+            return {
+               user: new User("John","Doe","11/10/1990","Software Engineer","2.75") 
+            }
+            
+        }
     }
 </script>
 
