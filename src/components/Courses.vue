@@ -8,14 +8,14 @@
                 <th>Grade</th>
             </tr>
         </thead>
-       <!--<tbody v-for="()"> 
+       <tbody v-for="(course, index) in tableContent" :key="index"> 
             <tr>
-                <td></td>
-                <td>Agile software development</td>
-                <td>1</td>
-                <td>82</td>
+                <td>{{ index + 1 }}</td>
+                <td>{{ course.title }}</td>
+                <td>{{ course.semester }}</td>
+                <td>{{ course.grade }}</td>
             </tr>
-        </tbody> -->
+        </tbody> 
     </table>
 </template>
 
@@ -28,3 +28,7 @@
         }
     }
 </script>
+
+<style scoped>
+
+</style>

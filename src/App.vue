@@ -6,47 +6,14 @@
         <section id="container">
             <section id="main">
                 <div class="content">
+                    <div id="profile-container" class="tab active">
                     <!-- Here were profile section -->
                     <Profile :userProps="user"/>
-                    
+                    </div>
                     <div id="courses-container" class="tab">
                         <h1 class="title">Courses</h1>
-                        <table id="courses">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Course Title</th>
-                                <th>Semester</th>
-                                <th>Grade</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Agile software development</td>
-                                <td>1</td>
-                                <td>82</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>System modeling</td>
-                                <td>1</td>
-                                <td>85</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Object-oriented programming</td>
-                                <td>2</td>
-                                <td>99</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Estonian language Level A2</td>
-                                <td>2</td>
-                                <td>65</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <!-- Here were courses section -->
+                        <Courses :tableContent="coursesTable" />
                         <br>
                         <br>
                         <div>
@@ -61,10 +28,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="controls">
-                    <button id="profile-button" class="pill active">Profile</button>
-                    <button id="courses-button" class="pill">Courses</button>
-                </div>
+                <!-- Here were Controls section -->
+                <Controls :switchContainer="switchContainer"/>
             </section>
         </section>
         <footer>
@@ -82,18 +47,37 @@
 
 <script>
     import User from "./models/User"
+    import Course from "./models/Course"
     import Profile from "./components/Profile.vue"
+    import Courses from "./components/Courses.vue"
+    import Controls from "./components/Controls.vue"
 
     export default {
         name: 'app',
         components: {
-            Profile
+            Profile,
+            Courses,
+            Controls
         },
+
         data: () => {
             return {
-               user: new User("John","Doe","11/10/1990","Software Engineer","2.75") 
+               user: new User("John","Doe","11/10/1990","Software Engineer","2.75"),
+               coursesTable: [
+                    new Course("Agile software development", 1, 82),
+                    new Course("System modeling", 1, 85),
+                    new Course("Object-oriented programming", 2, 99),
+                    new Course("Estonian language Level A2",2,65)
+               ],
+            }   
+        },
+
+        methods: {
+            switchContainer: function(event) {
+                /* eslint-disable no-console */
+                console.log(event);
+                /* eslint-enable no-console */
             }
-            
         }
     }
 </script>
