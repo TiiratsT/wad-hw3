@@ -17,14 +17,8 @@
                         <br>
                         <br>
                         <div>
-                            <button id="add-course-button" class="blue-button">+</button>
-                            <span id="add-course">
-                                <input class="input" type="text" placeholder="Course title" id="title">
-                                <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester">
-                                <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
-                                <button class="green-button" id="save-course">Save</button>
-                                <button class="grey-button" id="cancel-course">Cancel</button>
-                            </span>
+                        <!-- Here were add course section -->
+                            <AddCourse/>
                         </div>
                     </div>
                 </div>
@@ -51,13 +45,15 @@
     import Profile from "./components/Profile.vue"
     import Courses from "./components/Courses.vue"
     import Controls from "./components/Controls.vue"
+    import AddCourse from "./components/AddCourse.vue"
 
     export default {
         name: 'app',
         components: {
             Profile,
             Courses,
-            Controls
+            Controls,
+            AddCourse
         },
 
        
@@ -282,7 +278,11 @@
         min-width: 135px;
     }
 
-    #add-course {
+    .ca{
         display: none;
+    }
+
+    .ca.active{
+        display: inline;
     }
 </style>
