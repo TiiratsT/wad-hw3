@@ -6,11 +6,11 @@
         <section id="container">
             <section id="main">
                 <div class="content">
-                    <div id="profile-container" class="tab active">
+                    <div id="profile-container" v-bind:class="{'tab active': isActive, 'tab': isNotActive}">
                     <!-- Here were profile section -->
                     <Profile :userProps="user"/>
                     </div>
-                    <div id="courses-container" class="tab">
+                    <div id="courses-container" v-bind:class="{'tab': isActive, 'tab active': isNotActive}">
                         <h1 class="title">Courses</h1>
                         <!-- Here were courses section -->
                         <Courses :tableContent="coursesTable" />
@@ -60,10 +60,13 @@
             Controls
         },
 
+       
         data: () => {
             return {
-               user: new User("John","Doe","11/10/1990","Software Engineer","2.75"),
-               coursesTable: [
+                isActive: true,
+                isNotActive: false,
+                user: new User("John","Doe","11/10/1990","Software Engineer","2.75"),
+                coursesTable: [
                     new Course("Agile software development", 1, 82),
                     new Course("System modeling", 1, 85),
                     new Course("Object-oriented programming", 2, 99),
@@ -73,10 +76,15 @@
         },
 
         methods: {
-            switchContainer: function(event) {
-                /* eslint-disable no-console */
-                console.log(event);
-                /* eslint-enable no-console */
+            switchContainer: function(text) {      
+                if (text == 'Course') {
+                    this.isActive = false;
+                    this.isNotActive = true;
+                    
+                } else if (text == 'Profile') {
+                    this.isActive = true;
+                    this.isNotActive = false;
+                }
             }
         }
     }
