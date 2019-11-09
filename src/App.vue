@@ -18,7 +18,7 @@
                         <br>
                         <div>
                         <!-- Here were add course section -->
-                            <AddCourse/>
+                            <AddCourse :tableContent="coursesTable" :user="user"/>
                         </div>
                     </div>
                 </div>

@@ -12,10 +12,8 @@
 </template>
 
 <script>
-    import Course from "../models/Course";
-
     export default {
-        name: "AddcourseComponent",
+        name: "AddCourseComponent",
         props: {
             tableContent: Array,
             user: Object
@@ -27,7 +25,7 @@
                 inputCourse: "",
                 inputSemester: "",
                 inputGrade: ""
-            }   
+            }
         },
         methods: {
             Addcourse: function() {
@@ -40,7 +38,7 @@
                 }
             },
             add: function()  {
-                this.tableContent.push({title: "na", semester: 3, grade:50});
+                this.tableContent.push({title: this.inputCourse, semester: this.inputSemester, grade: this.inputGrade});
                 this.inputCourse = "";
                 this.inputSemester = "";
                 this.inputGrade = "";
