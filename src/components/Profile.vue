@@ -23,7 +23,7 @@
     export default {
         name: "ProfileComponent",
         props: {
-            userProps: Object,
+            userProps: Object
         }
     }
 </script>

@@ -18,7 +18,7 @@
                         <br>
                         <div>
                         <!-- Here were add course section -->
-                            <AddCourse :tableContent="coursesTable" :user="user"/>
+                            <AddCourse :tableContent="coursesTable" :user="user" :calculateGPA="calculateGPA"/>
                         </div>
                     </div>
                 </div>
@@ -61,13 +61,13 @@
             return {
                 isActive: true,
                 isNotActive: false,
-                user: new User("John","Doe","11/10/1990","Software Engineer","2.75"),
                 coursesTable: [
                     new Course("Agile software development", 1, 82),
                     new Course("System modeling", 1, 85),
                     new Course("Object-oriented programming", 2, 99),
                     new Course("Estonian language Level A2",2,65)
                ],
+                user: new User("John","Doe","11/10/1990","Software Engineer",2.75)
             }   
         },
 
@@ -76,12 +76,40 @@
                 if (text == 'Course') {
                     this.isActive = false;
                     this.isNotActive = true;
+                    this.calculateGPA();
                     
                 } else if (text == 'Profile') {
                     this.isActive = true;
                     this.isNotActive = false;
                 }
+            },
+
+            calculateGPA: function() {
+                let GPsum = 0;
+                let i;
+                for (i = 0; i < this.coursesTable.length; i++){
+                    if (this.coursesTable[i].grade > 90){
+                        GPsum += 4;
+                    }
+                    else if (this.coursesTable[i].grade > 80){
+                        GPsum += 3;
+                    }
+                    else if (this.coursesTable[i].grade > 70){
+                        GPsum += 2;
+                    }
+                    else if (this.coursesTable[i].grade > 60){
+                        GPsum += 1;
+                    }
+                    else if (this.coursesTable[i].grade > 50){
+                        GPsum += 0.5;
+                    }
+                }
+                this.user.gpa = Math.round((GPsum / this.coursesTable.length) * 100) / 100;
             }
+        },
+
+        beforeMount() {
+            this.calculateGPA();
         }
     }
 </script>

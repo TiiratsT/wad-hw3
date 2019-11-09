@@ -23,9 +23,7 @@
     export default {
         name: "CoursesComponent",
         props: {
-            tableContent: Array,
-            add: Function
-            // Add addCourse: Function
+            tableContent: Array
         }
     }
 </script>

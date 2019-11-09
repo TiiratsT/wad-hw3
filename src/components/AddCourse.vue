@@ -16,7 +16,8 @@
         name: "AddCourseComponent",
         props: {
             tableContent: Array,
-            user: Object
+            user: Object,
+            calculateGPA: Function
         },
          data: () => {
             return {
@@ -42,6 +43,9 @@
                 this.inputCourse = "";
                 this.inputSemester = "";
                 this.inputGrade = "";
+                this.caNotActive = true;
+                this.caActive = false;
+                this.calculateGPA();
             },
             cancel: function () {
                 this.inputCourse = "";
