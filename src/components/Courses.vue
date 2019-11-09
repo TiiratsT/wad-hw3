@@ -24,6 +24,7 @@
         name: "CoursesComponent",
         props: {
             tableContent: Array,
+            add: Function
             // Add addCourse: Function
         }
     }

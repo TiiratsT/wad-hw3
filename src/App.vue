@@ -53,7 +53,7 @@
             Profile,
             Courses,
             Controls,
-            AddCourse
+            AddCourse,
         },
 
        
